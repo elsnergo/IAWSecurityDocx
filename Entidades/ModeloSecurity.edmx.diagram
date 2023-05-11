@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8892cc9db2034ecbb13faa10974693b6" Name="Diagram1">
+        <EntityTypeShape EntityType="Entidades.countries" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.departments" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.dependents" Width="1.5" PointX="12" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.employees" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.jobs" Width="1.5" PointX="7.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.locations" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.Opcion" Width="1.5" PointX="0.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.regions" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.Rol" Width="1.5" PointX="5.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.RolOpcion" Width="1.5" PointX="2.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.userRol" Width="1.5" PointX="8" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.Usuario" Width="1.5" PointX="5.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.vw_rol_user" Width="1.5" PointX="11.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.vw_usuarios" Width="1.5" PointX="9.875" PointY="8.625" IsExpanded="true" />
+        <AssociationConnector Association="Entidades.FK__countries__regio__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__locations__count__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__departmen__locat__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__employees__depar__1BC821DD" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__dependent__emplo__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__employees__job_i__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.FK__employees__manag__1CBC4616" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.RefOpcion42" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.RefRol22" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.RefRol32" ManuallyRouted="false" />
+        <AssociationConnector Association="Entidades.RefUsuario12" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

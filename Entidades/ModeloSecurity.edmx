@@ -1,0 +1,928 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Entidades.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="countries">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="country_name" Type="varchar" MaxLength="40" />
+          <Property Name="region_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="department_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="location_id" Type="int" />
+        </EntityType>
+        <EntityType Name="dependents">
+          <Key>
+            <PropertyRef Name="dependent_id" />
+          </Key>
+          <Property Name="dependent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="relationship" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="20" />
+          <Property Name="last_name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="varchar" MaxLength="20" />
+          <Property Name="hire_date" Type="date" Nullable="false" />
+          <Property Name="job_id" Type="int" Nullable="false" />
+          <Property Name="salary" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="manager_id" Type="int" />
+          <Property Name="department_id" Type="int" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="job_title" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="min_salary" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="max_salary" Type="decimal" Precision="8" Scale="2" />
+        </EntityType>
+        <EntityType Name="locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="street_address" Type="varchar" MaxLength="40" />
+          <Property Name="postal_code" Type="varchar" MaxLength="12" />
+          <Property Name="city" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="state_province" Type="varchar" MaxLength="25" />
+          <Property Name="country_id" Type="char" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opcion">
+          <Key>
+            <PropertyRef Name="idOpcion" />
+          </Key>
+          <Property Name="idOpcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreOpcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcionOpcion" Type="varchar" MaxLength="100" />
+          <Property Name="estadoOpcion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regions">
+          <Key>
+            <PropertyRef Name="region_id" />
+          </Key>
+          <Property Name="region_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="region_name" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rolName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolOpcion">
+          <Key>
+            <PropertyRef Name="idRolOpcion" />
+          </Key>
+          <Property Name="idRolOpcion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idOpcion" Type="int" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userRol">
+          <Key>
+            <PropertyRef Name="idUserRol" />
+          </Key>
+          <Property Name="idUserRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="pwd" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_rol_user' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_rol_user">
+          <Key>
+            <PropertyRef Name="idUserRol" />
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="rolName" />
+          </Key>
+          <Property Name="idUserRol" Type="int" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="rolName" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_usuarios">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="nombres" />
+            <PropertyRef Name="apellidos" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="idUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="estado" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <Association Name="FK__countries__regio__06CD04F7">
+          <End Role="regions" Type="Self.regions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="countries" Type="Self.countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regions">
+              <PropertyRef Name="region_id" />
+            </Principal>
+            <Dependent Role="countries">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__departmen__locat__14270015">
+          <End Role="locations" Type="Self.locations" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="departments" Type="Self.departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="departments">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dependent__emplo__1F98B2C1">
+          <End Role="employees" Type="Self.employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dependents" Type="Self.dependents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="dependents">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__depar__1BC821DD">
+          <End Role="departments" Type="Self.departments" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__job_i__1AD3FDA4">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__manag__1CBC4616">
+          <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+          <End Role="employees1" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="employees1">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__locations__count__0C85DE4D">
+          <End Role="countries" Type="Self.countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locations" Type="Self.locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="countries">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="locations">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefOpcion42">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="1" />
+          <End Role="RolOpcion" Type="Self.RolOpcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="idOpcion" />
+            </Principal>
+            <Dependent Role="RolOpcion">
+              <PropertyRef Name="idOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRol22">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="userRol" Type="Self.userRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="userRol">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRol32">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="RolOpcion" Type="Self.RolOpcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolOpcion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuario12">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="userRol" Type="Self.userRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userRol">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntidadesStoreContainer">
+          <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dependents" EntityType="Self.dependents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="jobs" EntityType="Self.jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="locations" EntityType="Self.locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Opcion" EntityType="Self.Opcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="regions" EntityType="Self.regions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolOpcion" EntityType="Self.RolOpcion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userRol" EntityType="Self.userRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_rol_user" EntityType="Self.vw_rol_user" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_rol_user].[idUserRol] AS [idUserRol], 
+    [vw_rol_user].[idUser] AS [idUser], 
+    [vw_rol_user].[userName] AS [userName], 
+    [vw_rol_user].[idRol] AS [idRol], 
+    [vw_rol_user].[rolName] AS [rolName]
+    FROM [dbo].[vw_rol_user] AS [vw_rol_user]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_usuarios" EntityType="Self.vw_usuarios" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_usuarios].[idUser] AS [idUser], 
+    [vw_usuarios].[userName] AS [userName], 
+    [vw_usuarios].[nombres] AS [nombres], 
+    [vw_usuarios].[apellidos] AS [apellidos], 
+    [vw_usuarios].[email] AS [email], 
+    [vw_usuarios].[estado] AS [estado]
+    FROM [dbo].[vw_usuarios] AS [vw_usuarios]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__countries__regio__06CD04F7" Association="Self.FK__countries__regio__06CD04F7">
+            <End Role="regions" EntitySet="regions" />
+            <End Role="countries" EntitySet="countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__departmen__locat__14270015" Association="Self.FK__departmen__locat__14270015">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="departments" EntitySet="departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dependent__emplo__1F98B2C1" Association="Self.FK__dependent__emplo__1F98B2C1">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="dependents" EntitySet="dependents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__depar__1BC821DD" Association="Self.FK__employees__depar__1BC821DD">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__job_i__1AD3FDA4" Association="Self.FK__employees__job_i__1AD3FDA4">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__manag__1CBC4616" Association="Self.FK__employees__manag__1CBC4616">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="employees1" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__locations__count__0C85DE4D" Association="Self.FK__locations__count__0C85DE4D">
+            <End Role="countries" EntitySet="countries" />
+            <End Role="locations" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="RefOpcion42" Association="Self.RefOpcion42">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="RolOpcion" EntitySet="RolOpcion" />
+          </AssociationSet>
+          <AssociationSet Name="RefRol22" Association="Self.RefRol22">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="userRol" EntitySet="userRol" />
+          </AssociationSet>
+          <AssociationSet Name="RefRol32" Association="Self.RefRol32">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolOpcion" EntitySet="RolOpcion" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuario12" Association="Self.RefUsuario12">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="userRol" EntitySet="userRol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Entidades" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="countries">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="region_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="regions" Relationship="Self.FK__countries__regio__06CD04F7" FromRole="countries" ToRole="regions" />
+          <NavigationProperty Name="locations" Relationship="Self.FK__locations__count__0C85DE4D" FromRole="countries" ToRole="locations" />
+        </EntityType>
+        <EntityType Name="departments">
+          <Key>
+            <PropertyRef Name="department_id" />
+          </Key>
+          <Property Name="department_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="department_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location_id" Type="Int32" />
+          <NavigationProperty Name="locations" Relationship="Self.FK__departmen__locat__14270015" FromRole="departments" ToRole="locations" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employees__depar__1BC821DD" FromRole="departments" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="dependents">
+          <Key>
+            <PropertyRef Name="dependent_id" />
+          </Key>
+          <Property Name="dependent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="relationship" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__dependent__emplo__1F98B2C1" FromRole="dependents" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="first_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="hire_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="job_id" Type="Int32" Nullable="false" />
+          <Property Name="salary" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="manager_id" Type="Int32" />
+          <Property Name="department_id" Type="Int32" />
+          <NavigationProperty Name="departments" Relationship="Self.FK__employees__depar__1BC821DD" FromRole="employees" ToRole="departments" />
+          <NavigationProperty Name="dependents" Relationship="Self.FK__dependent__emplo__1F98B2C1" FromRole="employees" ToRole="dependents" />
+          <NavigationProperty Name="jobs" Relationship="Self.FK__employees__job_i__1AD3FDA4" FromRole="employees" ToRole="jobs" />
+          <NavigationProperty Name="employees1" Relationship="Self.FK__employees__manag__1CBC4616" FromRole="employees" ToRole="employees1" />
+          <NavigationProperty Name="employees2" Relationship="Self.FK__employees__manag__1CBC4616" FromRole="employees1" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="job_id" />
+          </Key>
+          <Property Name="job_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="job_title" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="min_salary" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="max_salary" Type="Decimal" Precision="8" Scale="2" />
+          <NavigationProperty Name="employees" Relationship="Self.FK__employees__job_i__1AD3FDA4" FromRole="jobs" ToRole="employees" />
+        </EntityType>
+        <EntityType Name="locations">
+          <Key>
+            <PropertyRef Name="location_id" />
+          </Key>
+          <Property Name="location_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street_address" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="postal_code" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="state_province" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="country_id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="countries" Relationship="Self.FK__locations__count__0C85DE4D" FromRole="locations" ToRole="countries" />
+          <NavigationProperty Name="departments" Relationship="Self.FK__departmen__locat__14270015" FromRole="locations" ToRole="departments" />
+        </EntityType>
+        <EntityType Name="Opcion">
+          <Key>
+            <PropertyRef Name="idOpcion" />
+          </Key>
+          <Property Name="idOpcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreOpcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcionOpcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="estadoOpcion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RolOpcion" Relationship="Self.RefOpcion42" FromRole="Opcion" ToRole="RolOpcion" />
+        </EntityType>
+        <EntityType Name="regions">
+          <Key>
+            <PropertyRef Name="region_id" />
+          </Key>
+          <Property Name="region_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="region_name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="countries" Relationship="Self.FK__countries__regio__06CD04F7" FromRole="regions" ToRole="countries" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rolName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="userRol" Relationship="Self.RefRol22" FromRole="Rol" ToRole="userRol" />
+          <NavigationProperty Name="RolOpcion" Relationship="Self.RefRol32" FromRole="Rol" ToRole="RolOpcion" />
+        </EntityType>
+        <EntityType Name="RolOpcion">
+          <Key>
+            <PropertyRef Name="idRolOpcion" />
+          </Key>
+          <Property Name="idRolOpcion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idOpcion" Type="Int32" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Opcion" Relationship="Self.RefOpcion42" FromRole="RolOpcion" ToRole="Opcion" />
+          <NavigationProperty Name="Rol" Relationship="Self.RefRol32" FromRole="RolOpcion" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="userRol">
+          <Key>
+            <PropertyRef Name="idUserRol" />
+          </Key>
+          <Property Name="idUserRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="Self.RefRol22" FromRole="userRol" ToRole="Rol" />
+          <NavigationProperty Name="Usuario" Relationship="Self.RefUsuario12" FromRole="userRol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="idUser" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pwd" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="userRol" Relationship="Self.RefUsuario12" FromRole="Usuario" ToRole="userRol" />
+        </EntityType>
+        <EntityType Name="vw_rol_user">
+          <Key>
+            <PropertyRef Name="idUserRol" />
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="idRol" />
+            <PropertyRef Name="rolName" />
+          </Key>
+          <Property Name="idUserRol" Type="Int32" Nullable="false" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <Property Name="userName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="rolName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_usuarios">
+          <Key>
+            <PropertyRef Name="idUser" />
+            <PropertyRef Name="userName" />
+            <PropertyRef Name="nombres" />
+            <PropertyRef Name="apellidos" />
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__countries__regio__06CD04F7">
+          <End Role="regions" Type="Self.regions" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="countries" Type="Self.countries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regions">
+              <PropertyRef Name="region_id" />
+            </Principal>
+            <Dependent Role="countries">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__locations__count__0C85DE4D">
+          <End Role="countries" Type="Self.countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="locations" Type="Self.locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="countries">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="locations">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__departmen__locat__14270015">
+          <End Role="locations" Type="Self.locations" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="departments" Type="Self.departments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="location_id" />
+            </Principal>
+            <Dependent Role="departments">
+              <PropertyRef Name="location_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__depar__1BC821DD">
+          <End Role="departments" Type="Self.departments" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departments">
+              <PropertyRef Name="department_id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__dependent__emplo__1F98B2C1">
+          <End Role="employees" Type="Self.employees" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="dependents" Type="Self.dependents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="dependents">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__job_i__1AD3FDA4">
+          <End Role="jobs" Type="Self.jobs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employees" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobs">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="employees">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employees__manag__1CBC4616">
+          <End Role="employees" Type="Self.employees" Multiplicity="0..1" />
+          <End Role="employees1" Type="Self.employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employees">
+              <PropertyRef Name="employee_id" />
+            </Principal>
+            <Dependent Role="employees1">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefOpcion42">
+          <End Role="Opcion" Type="Self.Opcion" Multiplicity="1" />
+          <End Role="RolOpcion" Type="Self.RolOpcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opcion">
+              <PropertyRef Name="idOpcion" />
+            </Principal>
+            <Dependent Role="RolOpcion">
+              <PropertyRef Name="idOpcion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRol22">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="userRol" Type="Self.userRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="userRol">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefRol32">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="RolOpcion" Type="Self.RolOpcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="RolOpcion">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RefUsuario12">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="userRol" Type="Self.userRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="userRol">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="seguridadDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="countries" EntityType="Self.countries" />
+          <EntitySet Name="departments" EntityType="Self.departments" />
+          <EntitySet Name="dependents" EntityType="Self.dependents" />
+          <EntitySet Name="employees" EntityType="Self.employees" />
+          <EntitySet Name="jobs" EntityType="Self.jobs" />
+          <EntitySet Name="locations" EntityType="Self.locations" />
+          <EntitySet Name="Opcion" EntityType="Self.Opcion" />
+          <EntitySet Name="regions" EntityType="Self.regions" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="RolOpcion" EntityType="Self.RolOpcion" />
+          <EntitySet Name="userRol" EntityType="Self.userRol" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="vw_rol_user" EntityType="Self.vw_rol_user" />
+          <EntitySet Name="vw_usuarios" EntityType="Self.vw_usuarios" />
+          <AssociationSet Name="FK__countries__regio__06CD04F7" Association="Self.FK__countries__regio__06CD04F7">
+            <End Role="regions" EntitySet="regions" />
+            <End Role="countries" EntitySet="countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__locations__count__0C85DE4D" Association="Self.FK__locations__count__0C85DE4D">
+            <End Role="countries" EntitySet="countries" />
+            <End Role="locations" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__departmen__locat__14270015" Association="Self.FK__departmen__locat__14270015">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="departments" EntitySet="departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__depar__1BC821DD" Association="Self.FK__employees__depar__1BC821DD">
+            <End Role="departments" EntitySet="departments" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__dependent__emplo__1F98B2C1" Association="Self.FK__dependent__emplo__1F98B2C1">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="dependents" EntitySet="dependents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__job_i__1AD3FDA4" Association="Self.FK__employees__job_i__1AD3FDA4">
+            <End Role="jobs" EntitySet="jobs" />
+            <End Role="employees" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employees__manag__1CBC4616" Association="Self.FK__employees__manag__1CBC4616">
+            <End Role="employees" EntitySet="employees" />
+            <End Role="employees1" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="RefOpcion42" Association="Self.RefOpcion42">
+            <End Role="Opcion" EntitySet="Opcion" />
+            <End Role="RolOpcion" EntitySet="RolOpcion" />
+          </AssociationSet>
+          <AssociationSet Name="RefRol22" Association="Self.RefRol22">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="userRol" EntitySet="userRol" />
+          </AssociationSet>
+          <AssociationSet Name="RefRol32" Association="Self.RefRol32">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolOpcion" EntitySet="RolOpcion" />
+          </AssociationSet>
+          <AssociationSet Name="RefUsuario12" Association="Self.RefUsuario12">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="userRol" EntitySet="userRol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EntidadesStoreContainer" CdmEntityContainer="seguridadDBEntities">
+          <EntitySetMapping Name="countries">
+            <EntityTypeMapping TypeName="Entidades.countries">
+              <MappingFragment StoreEntitySet="countries">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="region_id" ColumnName="region_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="departments">
+            <EntityTypeMapping TypeName="Entidades.departments">
+              <MappingFragment StoreEntitySet="departments">
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dependents">
+            <EntityTypeMapping TypeName="Entidades.dependents">
+              <MappingFragment StoreEntitySet="dependents">
+                <ScalarProperty Name="dependent_id" ColumnName="dependent_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="relationship" ColumnName="relationship" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="Entidades.employees">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="Entidades.jobs">
+              <MappingFragment StoreEntitySet="jobs">
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="job_title" ColumnName="job_title" />
+                <ScalarProperty Name="min_salary" ColumnName="min_salary" />
+                <ScalarProperty Name="max_salary" ColumnName="max_salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="Entidades.locations">
+              <MappingFragment StoreEntitySet="locations">
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="street_address" ColumnName="street_address" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state_province" ColumnName="state_province" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opcion">
+            <EntityTypeMapping TypeName="Entidades.Opcion">
+              <MappingFragment StoreEntitySet="Opcion">
+                <ScalarProperty Name="idOpcion" ColumnName="idOpcion" />
+                <ScalarProperty Name="nombreOpcion" ColumnName="nombreOpcion" />
+                <ScalarProperty Name="descripcionOpcion" ColumnName="descripcionOpcion" />
+                <ScalarProperty Name="estadoOpcion" ColumnName="estadoOpcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regions">
+            <EntityTypeMapping TypeName="Entidades.regions">
+              <MappingFragment StoreEntitySet="regions">
+                <ScalarProperty Name="region_id" ColumnName="region_id" />
+                <ScalarProperty Name="region_name" ColumnName="region_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="Entidades.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="rolName" ColumnName="rolName" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolOpcion">
+            <EntityTypeMapping TypeName="Entidades.RolOpcion">
+              <MappingFragment StoreEntitySet="RolOpcion">
+                <ScalarProperty Name="idRolOpcion" ColumnName="idRolOpcion" />
+                <ScalarProperty Name="idOpcion" ColumnName="idOpcion" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userRol">
+            <EntityTypeMapping TypeName="Entidades.userRol">
+              <MappingFragment StoreEntitySet="userRol">
+                <ScalarProperty Name="idUserRol" ColumnName="idUserRol" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="Entidades.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="pwd" ColumnName="pwd" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_rol_user">
+            <EntityTypeMapping TypeName="Entidades.vw_rol_user">
+              <MappingFragment StoreEntitySet="vw_rol_user">
+                <ScalarProperty Name="idUserRol" ColumnName="idUserRol" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="rolName" ColumnName="rolName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_usuarios">
+            <EntityTypeMapping TypeName="Entidades.vw_usuarios">
+              <MappingFragment StoreEntitySet="vw_usuarios">
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="nombres" ColumnName="nombres" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
