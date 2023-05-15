@@ -18,7 +18,7 @@
                             <div class="col-md4 col-md-offset-1">
                                 <div class="form-group">
                                     <%--<asp:GridView ID="gvUsuarios" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="idUser" OnRowCommand="gvUsuarios_RowCommand" CssClass="table">--%>
-                                    <asp:GridView ID="gvUsuarios" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="idUser" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" OnRowCommand="gvUsuarios_RowCommand" CssClass="table">
+                                    <asp:GridView ID="gvUsuarios" runat="server" AllowPaging="True" PageSize="10" AutoGenerateColumns="False" OnPageIndexChanging="gvUsuarios_PageIndexChanging" DataKeyNames="idUser" OnSelectedIndexChanged="gvUsuarios_SelectedIndexChanged" OnRowCommand="gvUsuarios_RowCommand" CssClass="table">
                                         <Columns>
                                             <asp:BoundField DataField="idUser" HeaderText="idUser" InsertVisible="False" ReadOnly="True" SortExpression="idUser" />
                                             <asp:BoundField DataField="userName" HeaderText="userName" SortExpression="userName" />

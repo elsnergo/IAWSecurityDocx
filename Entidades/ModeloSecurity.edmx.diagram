@@ -30,6 +30,8 @@
         <AssociationConnector Association="Entidades.RefRol22" ManuallyRouted="false" />
         <AssociationConnector Association="Entidades.RefRol32" ManuallyRouted="false" />
         <AssociationConnector Association="Entidades.RefUsuario12" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Entidades.AES" Width="1.5" PointX="7.75" PointY="11.625" />
+        <AssociationConnector Association="Entidades.FK_AES_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

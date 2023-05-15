@@ -269,6 +269,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="wfAsignarRolUser.aspx" />
     <Content Include="wfEditarUsuario.aspx" />
+    <Content Include="wfLogin.aspx" />
     <Content Include="wfInsertarUsuario.aspx" />
     <Content Include="wfGestionUsuario.aspx" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -365,6 +366,13 @@
     </Compile>
     <Compile Include="wfEditarUsuario.aspx.designer.cs">
       <DependentUpon>wfEditarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="wfLogin.aspx.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wfLogin.aspx.designer.cs">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="wfInsertarUsuario.aspx.cs">
       <DependentUpon>wfInsertarUsuario.aspx</DependentUpon>

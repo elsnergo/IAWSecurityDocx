@@ -53,8 +53,8 @@ namespace IAWSecurity
             usuario.email = this.txtEmail.Text.Trim();
             usuario.estado = 1;
         
-            var mensaje = usuarioNegocio.InsertarUsuarioNegocioSami(usuario);
-            //guardadoUsuario = usuarioNegocio.InsertarUsuarioNegocio(usuario);
+            var mensaje = usuarioNegocio.InsertarUsuarioNegocio(usuario);
+            //guardadoUsuario = usuarioNegocio.InsertarUsuarioNegocioSami(usuario);
             limpiarCampos();
 
         }

@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Entidades.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Entidades.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AES">
+          <Key>
+            <PropertyRef Name="idAes" />
+          </Key>
+          <Property Name="idAes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="token" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="iv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="countries">
           <Key>
             <PropertyRef Name="country_id" />
@@ -248,6 +257,18 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AES_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="AES" Type="Self.AES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="AES">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="RefOpcion42">
           <End Role="Opcion" Type="Self.Opcion" Multiplicity="1" />
           <End Role="RolOpcion" Type="Self.RolOpcion" Multiplicity="*" />
@@ -297,6 +318,7 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="EntidadesStoreContainer">
+          <EntitySet Name="AES" EntityType="Self.AES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="countries" EntityType="Self.countries" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dependents" EntityType="Self.dependents" Schema="dbo" store:Type="Tables" />
@@ -356,6 +378,10 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
             <End Role="countries" EntitySet="countries" />
             <End Role="locations" EntitySet="locations" />
           </AssociationSet>
+          <AssociationSet Name="FK_AES_Usuario" Association="Self.FK_AES_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="AES" EntitySet="AES" />
+          </AssociationSet>
           <AssociationSet Name="RefOpcion42" Association="Self.RefOpcion42">
             <End Role="Opcion" EntitySet="Opcion" />
             <End Role="RolOpcion" EntitySet="RolOpcion" />
@@ -373,8 +399,7 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
             <End Role="userRol" EntitySet="userRol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Entidades" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -513,6 +538,7 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="userRol" Relationship="Self.RefUsuario12" FromRole="Usuario" ToRole="userRol" />
+          <NavigationProperty Name="AES" Relationship="Entidades.FK_AES_Usuario" FromRole="Usuario" ToRole="AES" />
         </EntityType>
         <EntityType Name="vw_rol_user">
           <Key>
@@ -746,7 +772,34 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="userRol" EntitySet="userRol" />
           </AssociationSet>
+          <EntitySet Name="AES" EntityType="Entidades.AES" />
+          <AssociationSet Name="FK_AES_Usuario" Association="Entidades.FK_AES_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="AES" EntitySet="AES" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AES">
+          <Key>
+            <PropertyRef Name="idAes" />
+          </Key>
+          <Property Name="idAes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="token" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="iv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="Entidades.FK_AES_Usuario" FromRole="AES" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_AES_Usuario">
+          <End Type="Entidades.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="Entidades.AES" Role="AES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUser" />
+            </Principal>
+            <Dependent Role="AES">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -899,6 +952,16 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
                 <ScalarProperty Name="apellidos" ColumnName="apellidos" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AES">
+            <EntityTypeMapping TypeName="Entidades.AES">
+              <MappingFragment StoreEntitySet="AES">
+                <ScalarProperty Name="iv" ColumnName="iv" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idAes" ColumnName="idAes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

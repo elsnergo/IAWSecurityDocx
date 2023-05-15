@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AES.cs">
+      <DependentUpon>ModeloSecurity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="countries.cs">
       <DependentUpon>ModeloSecurity.tt</DependentUpon>

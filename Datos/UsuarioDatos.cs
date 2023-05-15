@@ -16,24 +16,30 @@ namespace Datos
     public class UsuarioDatos
     {
         seguridadDBEntities modelo = new seguridadDBEntities();
+        Usuario user = new Usuario();
+        AES aes = new AES();
+        AesDatos aesDt = new AesDatos();
         
-        public bool InsertarUsuarioDatos(Usuario user)
+        public int InsertarUsuarioDatos(Usuario user)
+        {
+            int idUsuarioGuardado = 0;
+            modelo.Usuario.Add(user);
+            modelo.SaveChanges();
+            idUsuarioGuardado = user.idUser;
+            Console.WriteLine($"idUsuarioGuardado: '{idUsuarioGuardado}'");
+            return idUsuarioGuardado;
+        }
+
+        public bool InsertarAES(AES aes)
         {
             bool guardado = false;
-            try
-            {
-                modelo.Usuario.Add(user);
-                modelo.SaveChanges();
-                guardado = true;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("Error en la capa de datos: "+e.Message.ToString());
-                Debug.WriteLine(e.StackTrace.ToString());
-            }
-
+            modelo.AES.Add(aes);
+            modelo.SaveChanges();
             return guardado;
         }
+
+
+
         /*
         public List<Usuario> ListarUsuarioDatos()
         {
@@ -98,6 +104,30 @@ namespace Datos
             List<Usuario> listUsuario = new List<Usuario>();
             listUsuario = modelo.Usuario.ToList();
             return listUsuario;
+        }
+
+        public bool validarCredenciales(string usuario, string pwd, int rol)
+        {
+            bool entrar = false;
+            string pwdDecrypt = "";
+            int rolSelected = rol;
+            Debug.WriteLine("rolSelected: " + rol);
+
+            user = modelo.Usuario.Where(u => u.userName.Equals(usuario)).FirstOrDefault();
+            aes = modelo.AES.Where(a => a.idUsuario == user.idUser).FirstOrDefault();
+
+            pwdDecrypt = aesDt.Decrypt_Aes(user.pwd, aes.token, aes.iv);
+
+            if(usuario.Equals(user.userName) && pwd.Equals(pwdDecrypt))
+            {
+                entrar = true;
+            }
+            else
+            {
+                entrar = false;
+            }
+
+            return entrar;
         }
 
 

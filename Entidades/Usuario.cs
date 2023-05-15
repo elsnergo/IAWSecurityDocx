@@ -18,6 +18,7 @@ namespace Entidades
         public Usuario()
         {
             this.userRol = new HashSet<userRol>();
+            this.AES = new HashSet<AES>();
         }
     
         public int idUser { get; set; }
@@ -30,5 +31,7 @@ namespace Entidades
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<userRol> userRol { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AES> AES { get; set; }
     }
 }

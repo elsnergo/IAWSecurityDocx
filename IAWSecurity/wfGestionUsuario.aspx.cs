@@ -84,6 +84,13 @@ namespace IAWSecurity
             */
          }
 
+        protected void gvUsuarios_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView gv = (GridView)sender;
+            gv.PageIndex = e.NewPageIndex;
+            CargarDatosGridView();
+        }
+
 
         /*protected void btnEditar_Click(object sender, EventArgs e)
         {

@@ -39,5 +39,6 @@ namespace Entidades
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<vw_rol_user> vw_rol_user { get; set; }
         public virtual DbSet<vw_usuarios> vw_usuarios { get; set; }
+        public virtual DbSet<AES> AES { get; set; }
     }
 }
