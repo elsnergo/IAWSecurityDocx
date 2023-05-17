@@ -126,6 +126,7 @@
           <Property Name="nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigoVerificacion" Type="nvarchar" MaxLength="10" />
           <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
@@ -539,6 +540,7 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
           <Property Name="estado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="userRol" Relationship="Self.RefUsuario12" FromRole="Usuario" ToRole="userRol" />
           <NavigationProperty Name="AES" Relationship="Entidades.FK_AES_Usuario" FromRole="Usuario" ToRole="AES" />
+          <Property Name="codigoVerificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_rol_user">
           <Key>
@@ -922,6 +924,7 @@ advertencia 6002: La tabla o vista 'seguridadDB.dbo.vw_usuarios' no tiene defini
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="Entidades.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="codigoVerificacion" ColumnName="codigoVerificacion" />
                 <ScalarProperty Name="idUser" ColumnName="idUser" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="pwd" ColumnName="pwd" />

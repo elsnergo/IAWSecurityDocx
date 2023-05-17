@@ -16,13 +16,16 @@ namespace Negocio
         AES aes = new AES();
         AesDatos aesDatos = new AesDatos();
         UsuarioDatos usuarioDatos = new UsuarioDatos();
+        CorreoElectronicoDatos correoDatos = new CorreoElectronicoDatos();
 
         public bool InsertarUsuarioNegocio(Usuario us)
         {
             int idUsuarioGuardado = 0;
             bool guardado = false;
+            bool enviado = false;
             string privateKey = "";
             string myIv = "";
+            string emailVerificacion = "";
             string pwdEncrypted = "";
             try
             {
@@ -31,6 +34,7 @@ namespace Negocio
                 { 
                     privateKey = aesDatos.randomAlphaNumeric(32);
                     myIv = Convert.ToBase64String(myAes.IV);
+                    emailVerificacion = aesDatos.randomAlphaNumeric(10);
                     pwdEncrypted = aesDatos.Encrypt_Aes(us.pwd, privateKey, myIv);
                     
                     Console.WriteLine($"Encrypted: '{pwdEncrypted}'");
@@ -40,12 +44,18 @@ namespace Negocio
                 }
                 //Asignamos al objeto la contraseña encriptada
                 us.pwd = pwdEncrypted;
+                us.codigoVerificacion = emailVerificacion;
                 idUsuarioGuardado = usuarioDatos.InsertarUsuarioDatos(us);
                 //Construimos el objeto AES con los datos de seguridad del usuario
                 aes.idUsuario = idUsuarioGuardado;
                 aes.token = privateKey;
                 aes.iv = myIv;
                 guardado = usuarioDatos.InsertarAES(aes);
+                if (guardado)
+                {
+                    enviado = correoDatos.EnviarCorreoElectronico(us.email, us.codigoVerificacion);
+                    Debug.WriteLine("enviado: " + enviado);
+                }
 
             }
             catch (Exception e)

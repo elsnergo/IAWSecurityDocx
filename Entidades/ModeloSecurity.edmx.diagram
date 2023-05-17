@@ -16,7 +16,7 @@
         <EntityTypeShape EntityType="Entidades.Rol" Width="1.5" PointX="5.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Entidades.RolOpcion" Width="1.5" PointX="2.875" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Entidades.userRol" Width="1.5" PointX="8" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Entidades.Usuario" Width="1.5" PointX="5.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Entidades.Usuario" Width="1.875" PointX="5.5" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Entidades.vw_rol_user" Width="1.5" PointX="11.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Entidades.vw_usuarios" Width="1.5" PointX="9.875" PointY="8.625" IsExpanded="true" />
         <AssociationConnector Association="Entidades.FK__countries__regio__06CD04F7" ManuallyRouted="false" />
