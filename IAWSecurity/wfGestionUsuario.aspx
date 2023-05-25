@@ -8,8 +8,10 @@
                 <section class="panel">
                     <header class="panel-heading">
                         <div class="col-md4 col-md-offset-4">
-                            <h1>Gestión de Usuarios
-                            </h1>
+                            <h1>Gestión de Usuarios</h1>
+                        </div>
+                        <div>
+                            <asp:LinkButton ID="btnRptListUsuario" runat="server" Text="Ver Lista de Usuarios" CssClass="btn-info"><img src="icons/printer_icon_32.png" title="Generar Reporte Lista de Usuarios" onclick="verRptListUsuario()"></asp:LinkButton>
                         </div>
                     </header>
 

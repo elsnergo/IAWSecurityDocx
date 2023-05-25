@@ -23,6 +23,11 @@ namespace IAWSecurity
             CargarDatosGridView();
         }
 
+        public void verRptListUsuario()
+        {
+            Response.Redirect("~/wfRptListUsuarios.aspx",false);
+        }
+
         /*
         private void ObtenerListado()
         {
